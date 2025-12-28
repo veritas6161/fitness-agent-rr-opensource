@@ -32,21 +32,31 @@ Everything is there. Your training history. Your progression. Your preferences. 
 
 ## 🎯 The Problem
 
-**Have you ever forgotten what workouts you did last week?** 
+### My Journey: From 30% to <20% Body Fat
 
-You know you hit legs... but did you do squats or leg press? How much weight? Did you hit your back enough? Are your quads getting more work than your hamstrings?
+Over the course of my two years of workouts, I went from a beginner with **30% body fat to below 20% body fat in three years**. I learned a lot about my body and exercises along the way.
 
-Every day, you face the same questions:
-- 🧠 **"What should I do today?"** — Decision fatigue drains mental energy
+**But here's what I discovered:** The stuff that actually gets in your way of making fitness a habit isn't the workouts themselves—it's the **friction** along the way.
+
+### The Real Barrier: Decision Friction
+
+**Have you ever stood in the gym thinking:**
+- 🧠 **"What should I do today?"** — Decision fatigue drains mental energy before you even start
 - ⏰ **"What did I do last time?"** — Memory limitations lead to inconsistent training
 - 📊 **"Am I balanced?"** — No way to track if you're hitting all muscle groups
 - ❓ **"Is this workout good?"** — Quality uncertainty means wasted sessions
 
-**The result?** Scrambled workouts, muscle imbalances, and inconsistent progress.
+**Unless and until you have an in-person trainer who helps you, or you put in extra time to think about what it is, you usually are not able to get the most out of your gym time.**
+
+The result? Scrambled workouts, muscle imbalances, inconsistent progress, and most importantly—**mental friction that kills consistency**.
+
+**But here's the thing: There's AI, and it's great. So we should use it.**
 
 ---
 
 ## ✨ The Solution
+
+**AI can eliminate the friction.** Just like an in-person trainer who knows your history, preferences, and goals, Fitness Agent removes every decision point between you and your workout.
 
 Fitness Agent is a **two-agent AI system** that:
 
@@ -56,7 +66,24 @@ Fitness Agent is a **two-agent AI system** that:
 4. **📧 Delivers** actionable instructions with pro tips via email
 5. **💾 Remembers** everything — your system never forgets
 
-**Result**: Wake up → Check email → Go to gym. **Zero decisions. Zero memory. Zero cognitive load. Just execute.**
+**Result**: Wake up at 6 AM → Check email → Go to gym. **Zero decisions. Zero memory. Zero cognitive load. Just execute.**
+
+### What I've Built
+
+**Receipts — What This System Actually Does:**
+
+- ✅ **Two-agent AI system** with automated quality evaluation (Generator + Eval agents working together)
+- ✅ **Muscle balance tracking** that analyzes your last 10-14 days automatically and identifies gaps
+- ✅ **Google Sheets integration** for seamless workout logging with pre-filled templates
+- ✅ **Email delivery** with rich markdown formatting, pro tips, and progression notes
+- ✅ **Model fallback strategy** ensuring 99.9% reliability (Claude Opus 4.5 → Gemini 1.5 Flash → GPT-5.2)
+- ✅ **Deployed to production** on Google Cloud Functions with Cloud Scheduler automation
+- ✅ **Knowledge base system** that remembers your goals, preferences, injury constraints, and gym layout
+- ✅ **Spatial efficiency** optimization (one block = one location, minimal floor transitions)
+- ✅ **Automated progression tracking** that references previous workout weights and suggests increases
+- ✅ **Quality assurance** with 4-dimensional scoring (Structure, Selection, Progression, Spatial) and auto-retry
+- ✅ **Friday skip logic** that automatically skips trainer days
+- ✅ **Zero-configuration daily delivery** — runs automatically every morning at 6 AM PST
 
 ---
 
@@ -66,8 +93,8 @@ Fitness Agent is a **two-agent AI system** that:
 
 ```mermaid
 graph TB
-    subgraph "🌙 Daily Trigger"
-        A[Cloud Scheduler<br/>9 PM PST]
+    subgraph "🌅 Daily Trigger"
+        A[Cloud Scheduler<br/>6 AM PST]
     end
     
     subgraph "📊 Data Layer"
@@ -416,11 +443,11 @@ kb/
      --region us-central1
    ```
 
-6. **Set up Cloud Scheduler** (9 PM PST daily)
+6. **Set up Cloud Scheduler** (6 AM PST daily)
    ```bash
    gcloud scheduler jobs create http fitness-agent-daily \
      --location=us-central1 \
-     --schedule="0 21 * * *" \
+     --schedule="0 6 * * *" \
      --uri="[FUNCTION_URL]?trigger=cron" \
      --http-method=GET \
      --time-zone="America/Los_Angeles"
@@ -447,7 +474,7 @@ GENERATOR_MODEL_PRIORITY = [
 
 ### Daily Workflow
 
-1. **🌙 9 PM PST**: System automatically triggers
+1. **🌅 6 AM PST**: System automatically triggers
 2. **🤖 Generation**: Generator Agent creates personalized workout
 3. **✅ Evaluation**: Eval Agent scores quality (auto-retry if needed)
 4. **📧 Delivery**: Workout email arrives in your inbox
@@ -507,10 +534,10 @@ For complete setup and deployment instructions, see:
 ### Deployment Checklist
 
 1. ✅ **Test locally** - Run `python3 main.py` to verify workflow
-2. ⏳ **Set up SendGrid** - Create account and get API key (see [Setup Guide](docs/SETUP.md))
-3. ⏳ **Deploy to Cloud Functions** - Follow [Deployment Guide](docs/DEPLOYMENT.md)
-4. ⏳ **Set up Cloud Scheduler** - Daily trigger at 9 PM PST
-5. ⏳ **Monitor and verify** - Check logs and email delivery
+2. ✅ **Set up SendGrid** - Create account and get API key (see [Setup Guide](docs/SETUP.md))
+3. ✅ **Deploy to Cloud Functions** - Follow [Deployment Guide](docs/DEPLOYMENT.md)
+4. ✅ **Set up Cloud Scheduler** - Daily trigger at 6 AM PST
+5. ✅ **Monitor and verify** - Check logs and email delivery
 
 ### Environment Variables
 
