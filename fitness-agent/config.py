@@ -2,8 +2,8 @@
 import os
 from dotenv import load_dotenv
 
-# Load .env file if it exists
-load_dotenv()
+# Load .env file if it exists (override=True ensures .env values override shell env vars)
+load_dotenv(override=True)
 
 # Google Sheets Configuration
 # Simple spreadsheet ID - swap out as needed for different months

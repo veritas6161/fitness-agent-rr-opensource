@@ -303,8 +303,13 @@ def generate_workout(request):
         except Exception as e:
             print(f"Sheets write error: {e}")
         
-        # Send email
+        # Build full email body for response (useful for CLI testing)
+        full_email_body = workout_email + "\n\n" + eval_append
         sheet_link = get_sheet_link(SPREADSHEET_ID, tab_name)
+        if sheet_link:
+            full_email_body += f"\n\n---\n📊 **Log your workout:** {sheet_link}"
+        
+        # Send email
         try:
             email_result = email_client.send_workout_email(
                 workout_email=workout_email,
@@ -329,6 +334,7 @@ def generate_workout(request):
             "eval_score": eval_result.get("overall", 0),
             "sheet_tab": tab_name,
             "email_sent": email_result.get("success", False),
+            "email_content": full_email_body,  # Include full email for CLI
         }
         
         return json.dumps(response), 200, {"Content-Type": "application/json"}
@@ -352,5 +358,32 @@ if __name__ == "__main__":
     
     # Run
     result = generate_workout(mock_request)
-    print("\n=== RESULT ===")
-    print(result)
+    
+    # Parse the result
+    if isinstance(result, tuple):
+        response_body, status_code, headers = result
+        response_data = json.loads(response_body)
+    else:
+        response_data = json.loads(result)
+    
+    # Print full email content
+    print("\n" + "="*80)
+    print("FULL WORKOUT EMAIL OUTPUT")
+    print("="*80 + "\n")
+    
+    if "email_content" in response_data:
+        print(response_data["email_content"])
+    else:
+        print("No email content in response")
+    
+    print("\n" + "="*80)
+    print("RESPONSE SUMMARY")
+    print("="*80)
+    print(f"Status: {response_data.get('status', 'unknown')}")
+    print(f"Date: {response_data.get('date', 'unknown')}")
+    print(f"Day Type: {response_data.get('day_type', 'unknown')}")
+    print(f"Passed: {response_data.get('passed', False)}")
+    print(f"Eval Score: {response_data.get('eval_score', 0)}/5")
+    print(f"Attempts: {response_data.get('attempts', 0)}")
+    print(f"Email Sent: {response_data.get('email_sent', False)}")
+    print("="*80)
