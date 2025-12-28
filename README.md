@@ -8,16 +8,41 @@
 
 ---
 
+<div align="center" style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; margin: 20px 0;">
+
+## 📧 **6:00 AM. Your phone buzzes.**
+
+You open your email. There it is—your workout for today.
+
+**Subject:** 💪 Saturday, December 27 — Lower Body Strength
+
+You scroll through:
+- 📊 **Muscle Balance Analysis**: "Your back only had 8 sets in the last 10 days (target: 12+). Today adds 4 sets of rowing work."
+- 🏋️ **Block A**: Barbell RDL, 3 sets × 6-8 reps @ 95 lbs (last session: 90 lbs → +5 lbs progression)
+- 💡 **Pro Tip**: "Think 'push hips back' not 'bend forward.' Your shins stay vertical."
+- 📍 **Location Flow**: Floor 2 → Floor 1 Machines → Floor 1 Open (minimal transitions)
+
+Everything is there. Your training history. Your progression. Your preferences. Your injury constraints.
+
+**You don't think. You just execute.**
+
+</div>
+
+---
+
 ## 🎯 The Problem
 
-Every day, you face the same question: **"What should I do at the gym today?"**
+**Have you ever forgotten what workouts you did last week?** 
 
-- 🧠 **Decision Fatigue**: Choosing exercises, sets, reps, and weights drains mental energy
-- ⏰ **Time Cost**: Daily prompting, reviewing, providing feedback, and iterating takes 15-30 minutes
-- 📝 **Memory Limitations**: Manually tracking progress, patterns, and preferences is error-prone
-- ❓ **Quality Uncertainty**: No objective way to know if a workout actually meets your goals
+You know you hit legs... but did you do squats or leg press? How much weight? Did you hit your back enough? Are your quads getting more work than your hamstrings?
 
-**What if your workout was waiting in your inbox every morning, perfectly tailored to your goals, progress, and preferences?**
+Every day, you face the same questions:
+- 🧠 **"What should I do today?"** — Decision fatigue drains mental energy
+- ⏰ **"What did I do last time?"** — Memory limitations lead to inconsistent training
+- 📊 **"Am I balanced?"** — No way to track if you're hitting all muscle groups
+- ❓ **"Is this workout good?"** — Quality uncertainty means wasted sessions
+
+**The result?** Scrambled workouts, muscle imbalances, and inconsistent progress.
 
 ---
 
@@ -25,12 +50,13 @@ Every day, you face the same question: **"What should I do at the gym today?"**
 
 Fitness Agent is a **two-agent AI system** that:
 
-1. **🧠 Generates** personalized workouts using your long-term training history
-2. **✅ Evaluates** workout quality automatically (no manual review needed)
-3. **📧 Delivers** actionable instructions with pro tips via email
-4. **📊 Tracks** everything automatically in Google Sheets
+1. **🧠 Generates** personalized workouts using your complete training history
+2. **📊 Tracks** muscle balance automatically — never forget what you did
+3. **✅ Evaluates** workout quality automatically (no manual review needed)
+4. **📧 Delivers** actionable instructions with pro tips via email
+5. **💾 Remembers** everything — your system never forgets
 
-**Result**: Wake up → Check email → Go to gym. Zero decisions. Zero prompting. Zero cognitive load.
+**Result**: Wake up → Check email → Go to gym. **Zero decisions. Zero memory. Zero cognitive load. Just execute.**
 
 ---
 
@@ -154,6 +180,47 @@ graph LR
 
 ## 🚀 Key Features
 
+### 📊 **Muscle Balance Tracking** — Never Forget What You Did
+
+**The Problem You Know Too Well:**
+
+> "Wait, did I do back yesterday or was that last week? Am I hitting my legs enough? Are my quads getting more work than my hamstrings?"
+
+**The Solution:**
+
+Fitness Agent analyzes your **last 10-14 days** of workouts and automatically tracks sets per muscle group:
+
+| Muscle Group | Target (10 days) | What Gets Tracked |
+|--------------|------------------|-------------------|
+| **Chest** | 12+ sets | Bench, chest press, flies |
+| **Back/Lats** | 12+ sets | Rows, pulldowns, pull-ups |
+| **Legs (Quads)** | 12+ sets | Squats, leg press, extensions, lunges |
+| **Legs (Posterior)** | 12+ sets | RDL, deadlift, hamstring curl, glutes |
+| **Shoulders** | 8+ sets | Press, raises, face pulls |
+| **Arms** | 8+ sets | Curls, pushdowns, extensions |
+| **Core** | 8+ sets | Planks, deadbugs, leg raises |
+
+**How It Works:**
+
+Every workout email includes a **Muscle Balance Analysis** callout:
+
+```
+📊 Muscle Balance Analysis:
+Your back only had 8 sets in the last 10 days (target: 12+). 
+Today's workout adds 4 sets of rowing work to address this gap.
+```
+
+**The Result:**
+
+- ✅ **No more guessing** — The system remembers everything you did
+- ✅ **Automatic corrections** — Under-hit muscle groups get prioritized
+- ✅ **Balanced training** — No more "oops, I forgot to do back this week"
+- ✅ **Injury prevention** — Balanced muscle development reduces injury risk
+
+**You never have to remember. The system remembers for you.**
+
+---
+
 ### 🧠 Long-Term Memory & Context
 
 The system maintains a comprehensive knowledge base:
@@ -161,10 +228,10 @@ The system maintains a comprehensive knowledge base:
 - **📋 Goals**: Primary targets (e.g., Ironman 70.3, body composition)
 - **🏋️ Exercise Library**: Available exercises with movement patterns
 - **🏢 Gym Layout**: Spatial constraints and equipment locations
-- **📊 Workout History**: Last 14 days of training data
+- **📊 Workout History**: Last 14 days of training data (automatically tracked)
 - **⚙️ Preferences**: Loved exercises, injury constraints, training style
 
-**Result**: Every workout is informed by your complete training context, not just today's prompt.
+**Result**: Every workout is informed by your complete training context, not just today's prompt. **The system remembers what you forget.**
 
 ### ✅ Automated Quality Evaluation
 
@@ -192,22 +259,38 @@ Every workout email includes:
 - **⚠️ Guardrails**: Safety notes, alternatives, must-follow rules
 - **📊 Quality Scores**: Eval metrics for transparency
 
-**Example Structure**:
+**Example Email Structure**:
+
+<div style="background-color: #f9f9f9; padding: 15px; border-left: 4px solid #4CAF50; margin: 15px 0;">
+
 ```
 # Saturday, December 27 — Lower Body Strength
 
-## Warm-Up (5 min)
+📊 Muscle Balance Analysis:
+Your back only had 8 sets in the last 10 days (target: 12+). 
+Today's workout adds 4 sets of rowing work to address this gap.
+
+## Warm-Up (5 min) — Floor 1 Open
+- Foam roll, dynamic stretches
+
 ## Block A: Heavy Compounds (Floor 2)
-  - Barbell RDL (3 sets × 6-8 reps)
-  - Barbell Back Squat (3 sets × 6-8 reps)
+- Barbell RDL: 3 sets × 6-8 reps @ 95 lbs
+  💡 Pro Tip: "Push hips back" not "bend forward"
+- Barbell Back Squat: 3 sets × 6-8 reps @ 115 lbs
+  📈 Last session: 110 lbs → +5 lbs progression
+
 ## Block B: Accessory/Pump (Floor 1)
-  - Leg Press, Leg Extension, Hamstring Curl...
+- Leg Press, Leg Extension, Hamstring Curl...
+
 ## Block C: Core + Zone 2
-  - Deadbug, Side Plank, Farmer Carries
+- Deadbug, Side Plank, Farmer Carries
+
 ## Cooldown (5 min)
 
 📊 Quality Score: 4.5/5.0
 ```
+
+</div>
 
 ### 📊 Automated Tracking
 
