@@ -30,16 +30,14 @@ credentials.json
 service-account.json
 
 # Personal/Sensitive Files (DO NOT COMMIT)
+../personal/
+../archive/
+
+# Personal/Sensitive Files (DO NOT COMMIT) - individual files if in root
 bodyspec-results.pdf
 Workout_Database_Guide.docx
 SESSION_NOTES.md
 2026 OKR_RR_v4.md
 Reza_Ironman_70.3_Plan_KB.md
-
-# Archive/Old Files
-"Fitness Agent v_120525/"
-old-base-files/
-
-# Personal documentation
 personal_agent_infrastructure.md
 

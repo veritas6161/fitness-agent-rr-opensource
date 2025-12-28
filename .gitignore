@@ -37,6 +37,10 @@ Thumbs.db
 *.tmp
 *.bak
 
+# Personal/Sensitive Files (DO NOT COMMIT)
+personal/
+archive/
+
 # Documentation (if contains sensitive info)
 # Uncomment if needed:
 # bodyspec-results.pdf
