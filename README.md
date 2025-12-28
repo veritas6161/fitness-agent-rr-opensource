@@ -79,9 +79,9 @@ Fitness Agent is a **two-agent AI system** that:
 - ✅ **Model fallback strategy** ensuring 99.9% reliability (Claude Opus 4.5 → Gemini 1.5 Flash → GPT-5.2)
 - ✅ **Deployed to production** on Google Cloud Functions with Cloud Scheduler automation
 - ✅ **Knowledge base system** that remembers your goals, preferences, injury constraints, and gym layout
-- ✅ **Spatial efficiency** optimization (one block = one location, minimal floor transitions)
+- ✅ **Gym efficiency** optimization (one block = one location, minimal breaks between sets, maintains focus)
 - ✅ **Automated progression tracking** that references previous workout weights and suggests increases
-- ✅ **Quality assurance** with 4-dimensional scoring (Structure, Selection, Progression, Spatial) and auto-retry
+- ✅ **Quality assurance** with 4-dimensional scoring (Structure, Selection, Progression, Gym Efficiency) and auto-retry
 - ✅ **Friday skip logic** that automatically skips trainer days
 - ✅ **Zero-configuration daily delivery** — runs automatically every morning at 6 AM PST
 
@@ -254,7 +254,7 @@ The system maintains a comprehensive knowledge base:
 
 - **📋 Goals**: Primary targets (e.g., Ironman 70.3, body composition)
 - **🏋️ Exercise Library**: Available exercises with movement patterns
-- **🏢 Gym Layout**: Spatial constraints and equipment locations
+- **🏢 Gym Layout**: Gym floor layout and equipment locations for efficient workout flow
 - **📊 Workout History**: Last 14 days of training data (automatically tracked)
 - **⚙️ Preferences**: Loved exercises, injury constraints, training style
 
@@ -269,7 +269,7 @@ The Eval Agent scores workouts across 4 dimensions:
 | **Structure** | Warm-up → Blocks → Cooldown, day type match | 25% |
 | **Selection** | From library, no forbidden exercises, proper sequence | 25% |
 | **Progression** | References previous weights, respects constraints | 25% |
-| **Spatial** | One block = one location, minimal transitions | 25% |
+| **Gym Efficiency** | One block = one location, minimal breaks between sets, maintains focus | 25% |
 
 **Pass Threshold**: Overall score ≥ 4.0/5.0 = ✅ PASS
 
@@ -367,7 +367,7 @@ kb/
 ├── status.md             # Current body comp, training setup
 ├── preferences.md        # Loved exercises, injury constraints
 ├── exercise_library.md   # Available exercises by movement
-└── gym_layout.md        # Floor layout, spatial rules
+└── gym_layout.md        # Floor layout, gym efficiency rules
 ```
 
 ---
@@ -518,7 +518,7 @@ FULL WORKOUT EMAIL OUTPUT
 - Structure: 5/5
 - Selection: 4/5
 - Progression: 4/5
-- Spatial: 5/5
+- Gym Efficiency: 5/5
 ```
 
 ---
