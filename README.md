@@ -37,7 +37,7 @@ Everything is there. Your training history. Your progression. Your preferences. 
 I went from **30% body fat to below 20%** in a year, recomped my body, and added 8lb+ lean muscle mass—but it required a lot of grinding to figure out what actually works.
 
 <div align="center" style="margin: 30px 0;">
-  <img src="images/before.jpg" alt="Before: 30% body fat" width="220" height="400" style="margin-right: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); object-fit: contain;">
+  <img src="images/before.jpg" alt="Before: 30% body fat" width="180" height="400" style="margin-right: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); object-fit: contain;">
   <img src="images/after.jpg" alt="After: <20% body fat, added muscle" width="280" height="400" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); object-fit: cover;">
   <br>
   <em style="color: #666; font-size: 14px; margin-top: 10px; display: block;">One year transformation: 30% → <20% body fat + 8lb lean muscle</em>
