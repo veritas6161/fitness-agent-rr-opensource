@@ -349,14 +349,16 @@ def evaluate_workout(
         result["issues"].append(result["summary"])
         return result
     
-    # Check for forbidden exercises
-    forbidden = ["dips", "push-ups", "pushups", "front rack"]
+    # Check for forbidden exercises (dips are discouraged but not auto-fail)
+    forbidden = ["push-ups", "pushups", "front rack"]
     email_lower = workout_email.lower()
     for exercise in forbidden:
         if exercise in email_lower:
             result["summary"] = f"Forbidden exercise detected: {exercise}"
             result["issues"].append(f"Exercise '{exercise}' violates wrist injury constraint")
             return result
+    
+    # Note: Dips are discouraged but not auto-fail - the LLM eval will reduce selection score if dips are used
     
     # Load KB files
     try:

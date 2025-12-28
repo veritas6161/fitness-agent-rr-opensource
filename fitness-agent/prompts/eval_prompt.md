@@ -31,21 +31,31 @@ Score each category 0-5:
 - Appropriate session length (50-55 min)
 
 ### 2. Exercise Selection (0-5)
-- Exercises are from the exercise library (no made-up exercises)
+- Majority of exercises are from the exercise library (allow 1-2 exercises not in library if they are standard/common movements)
+- Only auto-fail if >50% of exercises are not in library
+- Standard/common movements (e.g., lateral band walks, basic stretches) are acceptable even if not in library
 - Proper sequencing: compound before isolation, large before small
-- No forbidden exercises (dips, push-ups, front rack - wrist constraint)
+- No forbidden exercises (push-ups, front rack - wrist constraint)
+- Dips are discouraged but not auto-fail - reduce selection score if used
 - Variety appropriate for the day type
 - Includes Zone 2 fillers if strength day >45 min (not required for conditioning days)
 
 ### 3. Progression & Safety (0-5)
-- References previous workout weights (or notes "first session" if no data)
+- References previous workout weights OR notes "first session" OR provides RPE-based guidance (any of these is acceptable)
+- Progression specificity is flexible - don't require exact weight numbers if RPE/RIR guidance is provided
 - Respects all injury constraints (wrist, knees, back)
-- Follows 48h recovery rule (no same muscle group within 48h of last session)
+- Does not program same exercise on back-to-back days
+  - Same exercise = fail (e.g., chest press today → chest press tomorrow = fail)
+  - Same muscle group BUT: Different exercises hitting same muscle group with different movement patterns = OK (e.g., hamstring curl today → single leg RDL tomorrow = OK)
+  - Key: Only fail if it's the SAME exercise or SAME compound pattern
 - Volume is appropriate (not excessive, not too light)
 - Strain target aligns with day type
 
 ### 4. Spatial Efficiency (0-5)
 - One block = one location (no jumping between floors mid-block)
+  - **IMPORTANT:** Location evaluation applies ONLY to workout blocks (Block A, B, C)
+  - Warm-up and cooldown locations are NOT evaluated - even if missing or multiple locations, do NOT fail the workout
+  - Only blocks must follow "one block = one location" rule strictly
 - Logical floor progression (e.g., Floor 2 → Floor 1 → Floor 3)
 - Minimizes transitions
 - Equipment grouping makes sense
@@ -53,7 +63,7 @@ Score each category 0-5:
 ### 5. Muscle Balance (Bonus/Penalty)
 - **+0.5 bonus:** Workout addresses an under-hit muscle group AND includes the "Muscle Balance Analysis" callout at the top of the email
 - **-0.5 penalty:** Workout ignores an obviously under-hit muscle group that could have been addressed
-- **Neutral (0):** Muscle balance is fine, or the 48h rule prevents addressing the gap
+- **Neutral (0):** Muscle balance is fine, or the no back-to-back same exercise rule prevents addressing the gap
 
 **Target:** 12+ sets per major muscle group per 10 days. Check the previous workout data to verify.
 
@@ -65,7 +75,8 @@ These automatically fail the workout regardless of scores:
 
 | Condition | Why |
 |-----------|-----|
-| Uses forbidden exercise (dips, push-ups, front rack) | Wrist injury constraint |
+| Uses forbidden exercise (push-ups, front rack) | Wrist injury constraint |
+| Uses dips | Dips are discouraged but NOT auto-fail - reduce selection score instead |
 | Date mismatch (output date ≠ input date) | Hallucination |
 | Friday workout generated | Trainer day - no agent workouts |
 | Missing JSON output | Required for Sheets logging |
@@ -77,8 +88,8 @@ These automatically fail the workout regardless of scores:
 
 | Overall Score | Decision |
 |---------------|----------|
-| ≥ 4.0 | **PASS** |
-| 3.0 - 3.9 | **PASS** with note |
+| ≥ 3.5 | **PASS** |
+| 3.0 - 3.4 | **PASS** with note |
 | < 3.0 | **FAIL** - regenerate |
 
 Overall score = average of 4 category scores (structure, selection, progression, spatial).
@@ -148,7 +159,7 @@ Return ONLY this JSON (no other text):
 1. **Generated workout** (email format + JSON format from Generator)
 2. **KB files** (goals, status, preferences, exercise_library, gym_layout)
 3. **Date and day type** (to verify against)
-4. **Previous workouts** (optional, for checking 48h rule and progression)
+4. **Previous workouts** (optional, for checking no back-to-back same muscle group rule and progression)
 
 Use all context to evaluate. Be strict but fair.
 

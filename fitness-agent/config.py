@@ -38,6 +38,9 @@ GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 # Email Configuration
 EMAIL_RECIPIENT = os.environ.get("EMAIL_RECIPIENT")
 SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+# Sender email (must be verified in SendGrid)
+# If not set, will use EMAIL_RECIPIENT as sender
+SENDER_EMAIL = os.environ.get("SENDER_EMAIL")
 
 # Google Credentials (from environment variable)
 GOOGLE_CREDENTIALS = os.environ.get("GOOGLE_CREDENTIALS")

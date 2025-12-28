@@ -366,15 +366,15 @@ kb/
    ```
 
 2. **Install dependencies**
-   ```bash
+```bash
    cd fitness-agent
    pip install -r requirements.txt
-   ```
+```
 
 3. **Configure environment variables**
    
    Create a `.env` file in `fitness-agent/`:
-   ```bash
+```bash
    # API Keys
    ANTHROPIC_API_KEY=your-anthropic-key
    OPENAI_API_KEY=your-openai-key
@@ -391,16 +391,42 @@ kb/
 
 4. **Test locally**
    ```bash
+   # Test API keys
+   python3 test_keys.py
+   
+   # Test email integration (if SendGrid is configured)
+   python3 test_email.py
+   
+   # Test Sheets integration
+   python3 test_sheets.py
+   
+   # Test full workflow
    python3 main.py
    ```
 
-5. **Deploy to Cloud Run** (optional)
+5. **Deploy to Cloud Functions** (see [Deployment Guide](docs/DEPLOYMENT.md))
    ```bash
-   gcloud run deploy fitness-agent \
+   gcloud functions deploy fitness-agent \
+     --gen2 \
+     --runtime python39 \
+     --trigger-http \
+     --allow-unauthenticated \
+     --entry-point generate_workout \
      --source . \
-     --platform managed \
      --region us-central1
    ```
+
+6. **Set up Cloud Scheduler** (9 PM PST daily)
+   ```bash
+   gcloud scheduler jobs create http fitness-agent-daily \
+     --location=us-central1 \
+     --schedule="0 21 * * *" \
+     --uri="[FUNCTION_URL]?trigger=cron" \
+     --http-method=GET \
+     --time-zone="America/Los_Angeles"
+   ```
+
+   For detailed deployment instructions, see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
 ### Configuration
 
@@ -467,6 +493,37 @@ FULL WORKOUT EMAIL OUTPUT
 - Progression: 4/5
 - Spatial: 5/5
 ```
+
+---
+
+## 🚀 Deployment
+
+### Quick Start
+
+For complete setup and deployment instructions, see:
+- **[Setup Guide](docs/SETUP.md)** - Initial configuration and API key setup
+- **[Deployment Guide](docs/DEPLOYMENT.md)** - Cloud Functions deployment and Cloud Scheduler setup
+
+### Deployment Checklist
+
+1. ✅ **Test locally** - Run `python3 main.py` to verify workflow
+2. ⏳ **Set up SendGrid** - Create account and get API key (see [Setup Guide](docs/SETUP.md))
+3. ⏳ **Deploy to Cloud Functions** - Follow [Deployment Guide](docs/DEPLOYMENT.md)
+4. ⏳ **Set up Cloud Scheduler** - Daily trigger at 9 PM PST
+5. ⏳ **Monitor and verify** - Check logs and email delivery
+
+### Environment Variables
+
+All required environment variables must be set in Cloud Functions:
+- `ANTHROPIC_API_KEY` - Claude API (Generator primary)
+- `OPENAI_API_KEY` - GPT API (Eval primary)
+- `GEMINI_API_KEY` - Gemini API (Fallback)
+- `SENDGRID_API_KEY` - Email sending
+- `EMAIL_RECIPIENT` - Workout email destination
+- `SPREADSHEET_ID` - Google Sheets ID
+- `GOOGLE_CREDENTIALS` - Service account JSON
+
+See [docs/SETUP.md](docs/SETUP.md) for detailed setup instructions.
 
 ---
 
