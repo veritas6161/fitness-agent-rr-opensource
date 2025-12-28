@@ -34,7 +34,7 @@ Everything is there. Your training history. Your progression. Your preferences. 
 
 ### My Journey: From 30% to <20% Body Fat
 
-Over the course of my two years of workouts, I went from a beginner with **30% body fat to below 20% body fat in three years**. I learned a lot about my body and exercises along the way.
+I went from **30% body fat to below 20%** in a year, recomped my body, and added 8lb+ lean muscle mass—but it required a lot of grinding to figure out what actually works.
 
 **But here's what I discovered:** The stuff that actually gets in your way of making fitness a habit isn't the workouts themselves—it's the **friction** along the way.
 
