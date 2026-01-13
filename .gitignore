@@ -1,23 +1,36 @@
-# Environment variables and secrets
-.env
-*.env
-.env.local
-
-# Google credentials
-credentials.json
-service_account.json
-*-credentials.json
-
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
 venv/
-env/
 ENV/
+env/
 .venv
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+*.env
 
 # IDE
 .vscode/
@@ -25,24 +38,36 @@ ENV/
 *.swp
 *.swo
 *~
-
-# OS
 .DS_Store
-Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Personal/Private folders (not for open source)
+archive/
+personal/
+images/
+fitness-agent/env.yaml
+
+# Google Cloud
+.gcloudignore
+.gcloud/
 
 # Logs
 *.log
+logs/
 
 # Temporary files
 *.tmp
 *.bak
+*.cache
 
-# Personal/Sensitive Files (DO NOT COMMIT)
-personal/
-archive/
+# Jupyter Notebooks
+.ipynb_checkpoints
 
-# Documentation (if contains sensitive info)
-# Uncomment if needed:
-# bodyspec-results.pdf
-
-
+# OS
+.DS_Store
+Thumbs.db

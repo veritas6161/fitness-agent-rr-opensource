@@ -189,15 +189,15 @@ FUNCTION_URL=$(gcloud functions describe fitness-agent \
 # Create scheduler job
 gcloud scheduler jobs create http fitness-agent-daily \
   --location=us-central1 \
-  --schedule="0 21 * * *" \
+  --schedule="0 6 * * *" \
   --uri="$FUNCTION_URL?trigger=cron" \
   --http-method=GET \
   --time-zone="America/Los_Angeles" \
-  --description="Daily workout generation at 9 PM PST"
+  --description="Daily workout generation at 6 AM PST"
 ```
 
 **Schedule Details:**
-- `0 21 * * *` = 9 PM (21:00) every day
+- `0 6 * * *` = 6 AM (06:00) every day
 - `America/Los_Angeles` = Pacific Time
 - `?trigger=cron` = Identifies this as a cron trigger (Friday skip logic)
 
@@ -246,7 +246,7 @@ The function should automatically skip Fridays (trainer day). Test by:
 
 ### 4.3 Check Email Delivery
 
-- Verify workout emails are received daily (except Fridays)
+- Verify workout emails are received daily at 6 AM PST (except Fridays)
 - Check spam folder if emails not received
 - Verify email formatting is correct
 

@@ -4,7 +4,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Production-brightgreen.svg)]()
+[![Status](https://img.shields.io/badge/Status-Open%20Source-brightgreen.svg)]()
 
 ---
 
@@ -31,19 +31,6 @@ Everything is there. Your training history. Your progression. Your preferences. 
 ---
 
 ## 🎯 The Problem
-
-### My Journey: From 30% to <20% Body Fat
-
-I went from **30% body fat to below 20%** in a year, recomped my body, and added 8lb+ lean muscle mass—but it required a lot of grinding to figure out what actually works.
-
-<div align="center" style="margin: 30px 0;">
-  <img src="images/before.jpg" alt="Before: 30% body fat" width="180" height="400" style="margin-right: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); object-fit: contain;">
-  <img src="images/after.jpg" alt="After: <20% body fat, added muscle" width="280" height="400" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); object-fit: cover;">
-  <br>
-  <em style="color: #666; font-size: 14px; margin-top: 10px; display: block;">One year transformation: 30% → <20% body fat + 8lb lean muscle</em>
-</div>
-
-**But here's what I discovered:** The stuff that actually gets in your way of making fitness a habit isn't the workouts themselves—it's the **friction** along the way.
 
 ### The Real Barrier: Decision Friction
 
@@ -75,9 +62,9 @@ Fitness Agent is a **two-agent AI system** that:
 
 **Result**: Wake up at 6 AM → Check email → Go to gym. **Zero decisions. Zero memory. Zero cognitive load. Just execute.**
 
-### What I've Built
+### What This System Does
 
-**Receipts — What This System Actually Does:**
+**Key Features:**
 
 - ✅ **Two-agent AI system** with automated quality evaluation (Generator + Eval agents working together)
 - ✅ **Muscle balance tracking** that analyzes your last 10-14 days automatically and identifies gaps
@@ -89,8 +76,31 @@ Fitness Agent is a **two-agent AI system** that:
 - ✅ **Gym efficiency** optimization (one block = one location, minimal breaks between sets, maintains focus)
 - ✅ **Automated progression tracking** that references previous workout weights and suggests increases
 - ✅ **Quality assurance** with 4-dimensional scoring (Structure, Selection, Progression, Gym Efficiency) and auto-retry
-- ✅ **Friday skip logic** that automatically skips trainer days
+- ✅ **Customizable rest/trainer days** that automatically skip specified days
 - ✅ **Zero-configuration daily delivery** — runs automatically every morning at 6 AM PST
+
+---
+
+## 🎓 About This Repository
+
+**This is the open-source foundation.** This repository provides the core architecture, code, and templates needed to build your own personalized fitness agent.
+
+I use a more advanced version for my personal system with additional features, refined prompts, and deeper knowledge base customization. If you want the full templates, prompts, and implementation guide, [sign up here / check out the course / join the waitlist].
+
+**What's Included:**
+- ✅ Complete two-agent system architecture
+- ✅ Template knowledge base files (goals, preferences, gym layout, etc.)
+- ✅ Sanitized prompt templates
+- ✅ Full deployment guide for Google Cloud Platform
+- ✅ All source code (Python)
+
+**What's Not Included (Personal/Advanced):**
+- ❌ My personal knowledge base files (goals, preferences, gym layout)
+- ❌ My full prompt templates (the "magic" tuning)
+- ❌ Advanced evaluation framework details
+- ❌ Health data integrations (Whoop, etc.)
+
+**The goal:** You can take this repository, customize the KB files for your own goals and gym, and deploy your own version. See [docs/CUSTOMIZATION.md](docs/CUSTOMIZATION.md) for details.
 
 ---
 
@@ -259,7 +269,7 @@ Today's workout adds 4 sets of rowing work to address this gap.
 
 The system maintains a comprehensive knowledge base:
 
-- **📋 Goals**: Primary targets (e.g., Ironman 70.3, body composition)
+- **📋 Goals**: Primary targets (e.g., triathlon, body composition, strength)
 - **🏋️ Exercise Library**: Available exercises with movement patterns
 - **🏢 Gym Layout**: Gym floor layout and equipment locations for efficient workout flow
 - **📊 Workout History**: Last 14 days of training data (automatically tracked)
@@ -293,39 +303,6 @@ Every workout email includes:
 - **⚠️ Guardrails**: Safety notes, alternatives, must-follow rules
 - **📊 Quality Scores**: Eval metrics for transparency
 
-**Example Email Structure**:
-
-<div style="background-color: #f9f9f9; padding: 15px; border-left: 4px solid #4CAF50; margin: 15px 0;">
-
-```
-# Saturday, December 27 — Lower Body Strength
-
-📊 Muscle Balance Analysis:
-Your back only had 8 sets in the last 10 days (target: 12+). 
-Today's workout adds 4 sets of rowing work to address this gap.
-
-## Warm-Up (5 min) — Floor 1 Open
-- Foam roll, dynamic stretches
-
-## Block A: Heavy Compounds (Floor 2)
-- Barbell RDL: 3 sets × 6-8 reps @ 95 lbs
-  💡 Pro Tip: "Push hips back" not "bend forward"
-- Barbell Back Squat: 3 sets × 6-8 reps @ 115 lbs
-  📈 Last session: 110 lbs → +5 lbs progression
-
-## Block B: Accessory/Pump (Floor 1)
-- Leg Press, Leg Extension, Hamstring Curl...
-
-## Block C: Core + Zone 2
-- Deadbug, Side Plank, Farmer Carries
-
-## Cooldown (5 min)
-
-📊 Quality Score: 4.5/5.0
-```
-
-</div>
-
 ### 📊 Automated Tracking
 
 - **Google Sheets Integration**: Pre-filled workout logs ready for quick entry
@@ -341,15 +318,23 @@ Today's workout adds 4 sets of rowing work to address this gap.
 
 ```
 fitness-agent/
-├── main.py                  # Cloud Function orchestrator
-├── generator_agent.py       # Generator agent (Claude Opus 4.5)
-├── eval_agent.py            # Eval agent (GPT-5.2 / Gemini)
-├── sheets_client.py         # Google Sheets operations
-├── email_client.py          # Email notifications (SendGrid)
-├── config.py                # Configuration & model priorities
-└── prompts/
-    ├── generator_prompt.md   # Generator system prompt
-    └── eval_prompt.md       # Eval system prompt
+├── src/
+│   ├── main.py                  # Cloud Function orchestrator
+│   ├── generator_agent.py       # Generator agent (Claude Opus 4.5)
+│   ├── eval_agent.py            # Eval agent (GPT-5.2 / Gemini)
+│   ├── sheets_client.py         # Google Sheets operations
+│   ├── email_client.py          # Email notifications (SendGrid)
+│   └── config.py                # Configuration & model priorities
+├── kb/                          # Knowledge base (customize these!)
+│   ├── goals.md
+│   ├── status.md
+│   ├── preferences.md
+│   ├── exercise_library.md
+│   └── gym_layout.md
+├── prompts/                     # System prompts
+│   ├── generator_prompt.md
+│   └── eval_prompt.md
+└── requirements.txt
 ```
 
 ### Model Fallback Strategy
@@ -365,17 +350,6 @@ fitness-agent/
 3. 🥉 Claude Opus 4.5 (Fallback 2)
 
 **Why Different Models?** Ensures diversity - the model that generates doesn't evaluate, reducing bias.
-
-### Knowledge Base Structure
-
-```
-kb/
-├── goals.md              # Primary targets, weekly metrics
-├── status.md             # Current body comp, training setup
-├── preferences.md        # Loved exercises, injury constraints
-├── exercise_library.md   # Available exercises by movement
-└── gym_layout.md        # Floor layout, gym efficiency rules
-```
 
 ---
 
@@ -395,20 +369,30 @@ kb/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/veritas6161/fitness-agent-rr.git
-   cd fitness-agent-rr
+   git clone https://github.com/veritas6161/fitness-agent-rr-opensource.git
+   cd fitness-agent-rr-opensource
    ```
 
 2. **Install dependencies**
-```bash
-   cd fitness-agent
+   ```bash
    pip install -r requirements.txt
-```
+   ```
 
-3. **Configure environment variables**
+3. **Customize Knowledge Base Files**
    
-   Create a `.env` file in `fitness-agent/`:
-```bash
+   Edit the files in `kb/` to match your goals, preferences, and gym:
+   - `kb/goals.md` - Your fitness goals and targets
+   - `kb/status.md` - Current status and training setup
+   - `kb/preferences.md` - Exercise preferences and injury constraints
+   - `kb/gym_layout.md` - Your gym's layout and equipment
+   - `kb/exercise_library.md` - Available exercises (already populated)
+
+   See [docs/CUSTOMIZATION.md](docs/CUSTOMIZATION.md) for detailed guidance.
+
+4. **Configure environment variables**
+   
+   Create a `.env` file in the root directory:
+   ```bash
    # API Keys
    ANTHROPIC_API_KEY=your-anthropic-key
    OPENAI_API_KEY=your-openai-key
@@ -423,8 +407,9 @@ kb/
    GOOGLE_CREDENTIALS='{"type":"service_account",...}'
    ```
 
-4. **Test locally**
+5. **Test locally**
    ```bash
+   cd src
    # Test API keys
    python3 test_keys.py
    
@@ -438,7 +423,7 @@ kb/
    python3 main.py
    ```
 
-5. **Deploy to Cloud Functions** (see [Deployment Guide](docs/DEPLOYMENT.md))
+6. **Deploy to Cloud Functions** (see [Deployment Guide](docs/DEPLOYMENT.md))
    ```bash
    gcloud functions deploy fitness-agent \
      --gen2 \
@@ -446,11 +431,11 @@ kb/
      --trigger-http \
      --allow-unauthenticated \
      --entry-point generate_workout \
-     --source . \
+     --source src \
      --region us-central1
    ```
 
-6. **Set up Cloud Scheduler** (6 AM PST daily)
+7. **Set up Cloud Scheduler** (6 AM PST daily)
    ```bash
    gcloud scheduler jobs create http fitness-agent-daily \
      --location=us-central1 \
@@ -464,7 +449,7 @@ kb/
 
 ### Configuration
 
-Key settings in `config.py`:
+Key settings in `src/config.py`:
 
 ```python
 MAX_EVAL_ATTEMPTS = 3  # Retry limit for quality check
@@ -492,7 +477,7 @@ GENERATOR_MODEL_PRIORITY = [
 For testing or manual generation:
 
 ```bash
-cd fitness-agent
+cd src
 python3 main.py
 ```
 
@@ -500,33 +485,6 @@ Output includes:
 - Full workout email content
 - Eval scores and feedback
 - Response summary
-
-### Example Output
-
-```
-================================================================================
-FULL WORKOUT EMAIL OUTPUT
-================================================================================
-
-# Saturday, December 27 — Lower Body Strength
-
-**Target:** 9 exercises | **HR Target:** >135 | **Session Length:** 50-55 min
-
-## Warm-Up (5 min)
-- Foam roll, dynamic stretches
-
-## Block A: Heavy Compounds
-- Barbell RDL: 3 sets × 6-8 reps @ 95 lbs
-- Barbell Back Squat: 3 sets × 6-8 reps @ 115 lbs
-
-[... full workout details ...]
-
-📊 Quality Score: 4.5/5.0
-- Structure: 5/5
-- Selection: 4/5
-- Progression: 4/5
-- Gym Efficiency: 5/5
-```
 
 ---
 
@@ -537,14 +495,16 @@ FULL WORKOUT EMAIL OUTPUT
 For complete setup and deployment instructions, see:
 - **[Setup Guide](docs/SETUP.md)** - Initial configuration and API key setup
 - **[Deployment Guide](docs/DEPLOYMENT.md)** - Cloud Functions deployment and Cloud Scheduler setup
+- **[Customization Guide](docs/CUSTOMIZATION.md)** - How to personalize KB files for your goals
 
 ### Deployment Checklist
 
-1. ✅ **Test locally** - Run `python3 main.py` to verify workflow
-2. ✅ **Set up SendGrid** - Create account and get API key (see [Setup Guide](docs/SETUP.md))
-3. ✅ **Deploy to Cloud Functions** - Follow [Deployment Guide](docs/DEPLOYMENT.md)
-4. ✅ **Set up Cloud Scheduler** - Daily trigger at 6 AM PST
-5. ✅ **Monitor and verify** - Check logs and email delivery
+1. ✅ **Customize KB files** - Edit `kb/` files for your goals and gym
+2. ✅ **Test locally** - Run `python3 src/main.py` to verify workflow
+3. ✅ **Set up SendGrid** - Create account and get API key (see [Setup Guide](docs/SETUP.md))
+4. ✅ **Deploy to Cloud Functions** - Follow [Deployment Guide](docs/DEPLOYMENT.md)
+5. ✅ **Set up Cloud Scheduler** - Daily trigger at 6 AM PST
+6. ✅ **Monitor and verify** - Check logs and email delivery
 
 ### Environment Variables
 
@@ -558,24 +518,6 @@ All required environment variables must be set in Cloud Functions:
 - `GOOGLE_CREDENTIALS` - Service account JSON
 
 See [docs/SETUP.md](docs/SETUP.md) for detailed setup instructions.
-
----
-
-## 📈 Results & Impact
-
-### Time Saved
-- **Before**: 15-30 min/day (prompting, review, feedback)
-- **After**: 0 min/day (automated)
-- **Weekly**: ~2-3.5 hours saved
-
-### Quality Assurance
-- **Automated Evaluation**: Every workout scored before delivery
-- **Consistency**: No more "bad workout days"
-- **Progression**: Data-driven weight increases
-
-### Cognitive Load
-- **Before**: Daily decisions, memory of past workouts, planning
-- **After**: Zero decisions, system remembers everything
 
 ---
 
@@ -602,27 +544,30 @@ See [docs/SETUP.md](docs/SETUP.md) for detailed setup instructions.
 ## 🏗️ Project Structure
 
 ```
-Fitness Agent/
-├── fitness-agent/              # Main application
+fitness-agent-rr-opensource/
+├── src/                        # Source code
 │   ├── main.py                 # Orchestrator
 │   ├── generator_agent.py      # Generator implementation
 │   ├── eval_agent.py           # Eval implementation
 │   ├── sheets_client.py        # Sheets operations
 │   ├── email_client.py         # Email delivery
 │   ├── config.py               # Configuration
-│   ├── kb/                     # Knowledge base
-│   │   ├── goals.md
-│   │   ├── status.md
-│   │   ├── preferences.md
-│   │   ├── exercise_library.md
-│   │   └── gym_layout.md
-│   └── prompts/                # System prompts
-│       ├── generator_prompt.md
-│       └── eval_prompt.md
+│   └── test_*.py               # Test files
+├── kb/                         # Knowledge base (CUSTOMIZE THESE!)
+│   ├── goals.md
+│   ├── status.md
+│   ├── preferences.md
+│   ├── exercise_library.md
+│   └── gym_layout.md
+├── prompts/                    # System prompts
+│   ├── generator_prompt.md
+│   └── eval_prompt.md
 ├── docs/                       # Documentation
-│   ├── BUILD_PLAN.md
-│   ├── GITHUB_SETUP.md
-│   └── PRD.md
+│   ├── SETUP.md
+│   ├── DEPLOYMENT.md
+│   └── CUSTOMIZATION.md
+├── requirements.txt
+├── LICENSE
 └── README.md                   # This file
 ```
 
@@ -630,7 +575,7 @@ Fitness Agent/
 
 ## 🤝 Contributing
 
-This is a personal project, but suggestions and feedback are welcome!
+This is an open-source project! Contributions are welcome:
 
 1. Fork the repository
 2. Create a feature branch
@@ -641,7 +586,7 @@ This is a personal project, but suggestions and feedback are welcome!
 
 ## 📄 License
 
-[Your License Here]
+[MIT License](LICENSE)
 
 ---
 
