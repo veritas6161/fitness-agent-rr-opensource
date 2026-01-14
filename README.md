@@ -23,6 +23,14 @@ Everything is there. Your training history. Your progression. Your preferences. 
 
 **You don't think. You just execute.**
 
+<div align="center">
+
+![Workout Email Example](fitness%20agent%20email-1.png)
+
+*Example workout email showing muscle balance analysis, exercise details, and progression notes*
+
+</div>
+
 ---
 
 ## 🎯 The Problem
@@ -60,19 +68,19 @@ Fitness Agent is a **two-agent AI system** that:
 ```mermaid
 graph TB
     subgraph "📊 Data Layer"
-        A[Knowledge Base<br/>Goals, Preferences, Gym Layout]
-        B[Workout History<br/>Raw CSV from Sheets]
-        C[Exercise Library]
+        A[Knowledge Base<br/>Goals & Preferences]
+        B[Workout History<br/>CSV from Sheets]
+        C[Exercise Library<br/>Available Exercises]
     end
     
     subgraph "⚙️ Processing"
-        D[Workout Processor<br/>Deterministic Summary]
-        E[Generator Agent<br/>Claude / Gemini / GPT]
-        F[Eval Agent<br/>Quality Check]
+        D[Workout Processor<br/>Create Summary JSON]
+        E[Generator Agent<br/>Create Workout]
+        F[Eval Agent<br/>Score Quality]
     end
     
     subgraph "📤 Output"
-        G[Email + Sheets]
+        G[Email + Sheets<br/>Deliver Workout]
     end
     
     B --> D
@@ -101,6 +109,8 @@ graph TB
 ### 📊 Muscle Balance Tracking
 
 The system analyzes your last 10-14 days of workouts and tracks sets per muscle group. If any muscle group falls below the target (e.g., back has only 8 sets when target is 12+), today's workout automatically prioritizes that group. Every email includes a "Muscle Balance Analysis" callout so you know exactly why certain exercises were chosen.
+
+![Muscle Balance Analysis](fitness%20agent%20email-2.png)
 
 ### ✅ Automated Quality Evaluation
 
