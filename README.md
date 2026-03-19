@@ -71,6 +71,7 @@ graph TB
         A[Knowledge Base<br/>Goals & Preferences]
         B[Workout History<br/>CSV from Sheets]
         C[Exercise Library<br/>Available Exercises]
+        H[WHOOP API<br/>Recovery, HRV, Strain, Sleep]
     end
     
     subgraph "⚙️ Processing"
@@ -84,6 +85,7 @@ graph TB
     end
     
     B --> D
+    H -->|Biometrics| D
     D -->|Summary JSON| E
     A --> E
     C --> E
@@ -108,7 +110,7 @@ graph TB
 
 ### 📡 WHOOP Integration — Biometric-Driven Training
 
-The system connects to the [WHOOP API](https://developer.whoop.com/) to pull real-time biometric data and adjust workouts based on your body's actual readiness — not just a schedule.
+Built on the [WHOOP Developer API](https://developer.whoop.com/). The system authenticates via OAuth2, pulls real-time recovery, strain, sleep, and HRV data, and uses it to dynamically adjust workout prescriptions based on your body's actual physiological readiness — not just a schedule.
 
 <div align="center">
 <img src="whoop-recovery.jpg" width="220" alt="WHOOP Recovery Score 98%">
@@ -258,6 +260,10 @@ GEMINI_API_KEY=your-gemini-key
 SENDGRID_API_KEY=your-sendgrid-key
 EMAIL_RECIPIENT=your-email@example.com
 
+# WHOOP Developer API (https://developer.whoop.com/)
+WHOOP_CLIENT_ID=your-whoop-client-id
+WHOOP_CLIENT_SECRET=your-whoop-client-secret
+
 # Google Sheets
 SPREADSHEET_ID=your-google-sheets-id
 GOOGLE_CREDENTIALS='{"type":"service_account",...}'
@@ -356,7 +362,7 @@ fitness-agent/
 
 **What's Included:**
 - Complete two-agent system architecture
-- WHOOP API integration for biometric-driven training adjustments
+- WHOOP Developer API integration (OAuth2, real-time biometric data) for recovery-driven training adjustments
 - Template knowledge base files ready for customization
 - Sanitized prompt templates
 - Full deployment guide for Google Cloud Platform
