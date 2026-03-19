@@ -106,6 +106,80 @@ graph TB
 
 ## 🚀 Key Features
 
+### 📡 WHOOP Integration — Biometric-Driven Training
+
+The system connects to the [WHOOP API](https://developer.whoop.com/) to pull real-time biometric data and adjust workouts based on your body's actual readiness — not just a schedule.
+
+<div align="center">
+<img src="whoop-recovery.jpg" width="220" alt="WHOOP Recovery Score 98%">
+<img src="whoop-sleep.jpg" width="220" alt="WHOOP Sleep Performance 82%">
+<img src="whoop-strain.jpg" width="220" alt="WHOOP Assault Bike Strain 15.4">
+
+*Real WHOOP data: Recovery score, sleep performance, and strain tracking — all feeding into workout decisions.*
+</div>
+
+#### How Recovery Drives Your Workout
+
+| WHOOP Signal | What the Agent Does |
+|---|---|
+| **Recovery 67%+** (Green) | Full intensity — heavy compounds, PR attempts, high volume |
+| **Recovery 34-66%** (Yellow) | Moderate volume — technique focus, controlled loads |
+| **Recovery <34%** (Red) | Active recovery — mobility, light cardio, deload |
+| **HRV trending down** (3+ days) | Auto-deloads volume 20-30%, prioritizes recovery work |
+| **Sleep <70%** | Reduces complexity, swaps compounds for machines (less CNS demand) |
+| **High strain target** | Matches planned intensity to WHOOP's optimal strain for the day |
+
+#### The Feedback Loop
+
+```
+WHOOP Band (24/7)  →  WHOOP API  →  Fitness Agent  →  Personalized Workout Email
+     ↑                              (Recovery,        (Adjusted intensity,
+     │                               HRV, Strain,      volume, exercise
+     │                               Sleep)            selection)
+     │                                                       │
+     └──────────── You train, WHOOP tracks ←─────────────────┘
+```
+
+#### Example: Same Person, Different Days
+
+**🟢 Green Day (Recovery: 98%, HRV: 118ms)**
+```
+Subject: 💪 Thursday, Mar 19 — Lower Body Strength (GREEN LIGHT)
+
+📊 Biometric Context:
+   Recovery: 98% ✅ | HRV: 118ms (15% above baseline) | Sleep: 89%
+   → Peak recovery. Your body is ready to perform. Let's push it.
+
+🏋️ Block A - Heavy Compounds:
+   Back Squat: 4 sets × 6 reps @ 160 lbs (Last: 155 lbs → +5 lbs)
+   Barbell RDL: 3 sets × 8 reps @ 115 lbs
+```
+
+**🔴 Red Day (Recovery: 28%, HRV: 42ms)**
+```
+Subject: 🧘 Thursday, Mar 19 — Active Recovery
+
+📊 Biometric Context:
+   Recovery: 28% ⚠️ | HRV: 42ms (below baseline) | Sleep: 58%
+   → Your body needs recovery today. Light movement only.
+
+🧘 Today's Plan:
+   20 min Zone 1-2 walk or light cycling
+   Full body mobility flow (15 min)
+   Foam rolling + stretching
+```
+
+**You never have to decide "should I push hard or take it easy?" — your body's data decides for you.**
+
+<div align="center">
+<img src="whoop-swimming.jpg" width="220" alt="WHOOP Swimming HR Zones">
+<img src="whoop-hiit.jpg" width="220" alt="WHOOP HIIT Session Zones">
+
+*HR zone tracking across activities — swimming and HIIT sessions feeding back into recovery calculations.*
+</div>
+
+---
+
 ### 📊 Muscle Balance Tracking
 
 The system analyzes your last 10-14 days of workouts and tracks sets per muscle group. If any muscle group falls below the target (e.g., back has only 8 sets when target is 12+), today's workout automatically prioritizes that group. Every email includes a "Muscle Balance Analysis" callout so you know exactly why certain exercises were chosen.
@@ -282,6 +356,7 @@ fitness-agent/
 
 **What's Included:**
 - Complete two-agent system architecture
+- WHOOP API integration for biometric-driven training adjustments
 - Template knowledge base files ready for customization
 - Sanitized prompt templates
 - Full deployment guide for Google Cloud Platform
@@ -290,7 +365,6 @@ fitness-agent/
 **What's Not Included:**
 - My personal knowledge base files
 - My full prompt templates (the "magic" tuning)
-- Health data integrations (Whoop, etc.)
 
 **The goal:** Fork this repository, customize the KB files for your own goals and gym, and deploy your own version.
 
